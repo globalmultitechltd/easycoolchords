@@ -1,1 +1,480 @@
-test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Easy Cool Chords (for Suno)</title>
+<style>
+  body {
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+  }
+</style>
+</head>
+<body>
+ <img src="oage-logo.jpg" alt="EASY COOL CHORDS (FOR SUNO)" style="display: block; margin: 0 auto; max-width: 100%; width: 30%;">
+ 
+
+ 
+ <p id="audioStatus" style="text-align: center; color: yellow;">Loading chords, please wait... </p>
+ <div style="width: 50%; margin: 0 auto;">
+   <div id="progressBar" style="width: 0%; height: 20px; background-color: yellow; transition: width 0.3s;"></div>
+ </div>
+ 
+ </p>
+<br>
+  <p><b>Ready to have a massive influence on your next Suno track, so it uses your own cool chords, pattern and tempo?<b></p>
+    <a href="https://suno.com/s/V47xTS6I58XkspHq" target="_blank" style="color: lightblue;">(quick QAED suno example)</a>
+  <p><br>
+    <b style="color: yellow;">STEP ONE</b> <p>START THE METRONOME to guide your timing (eg 125 bpm for House) 
+	<p>
+	<button id="metronomeButton">Start Metronome</button>
+<input id="tempoInput" type="number" value="125" min="30" max="300" style="width: 60px;" /> BPM
+<p><br>
+
+    <b style="color: yellow;">STEP TWO</b> <p> HIT KEYBOARD LETTERS to work out some chords that you like, and play them in a rhythm you like (eg, E P Q P or Q A E D or C J L) <a href="cool_chords_QAED_recording.wav" target="_blank" style="color: lightblue;">(quick QAED recording example)</a>
+
+    <p><br>
+      <h2 style="color: yellow;">Tips:</h2>
+      <ol>
+        <li>Easy Cool Chords is not currently designed for Mobile. Please use desktop. (Chrome, Edge, Netscape Navigator)
+        <li>It's easier to find chords that work well together if you stick to chords from ONE keyboard row (eg a row beginning with 1, Q, A or \ )
+        <li>The most boring chords are on the number row
+        <li>You can improve your rhythm timing if you set the metronome to a slower tempo. Then after recording, choose to increase the tempo timing when asked.
+        <li>It doesn't matter that Easy Cool Chords uses piano. Suno will change the piano to whatever instrument fits the style you've requested.
+        <li>It doesn't matter if the timing of your chords are a bit off / wonky. Suno can straighten them out. (Optionally you can Quantize your recording, or record it slowly then speed it up, at Step 3).
+        <li>If you hear no sound when pressing a keyboard key, click anywhere on this webpage first.
+      <label>
+      <br>
+     
+      </ol>
+
+	<p><br>
+    <b style="color: yellow;">STEP THREE</b> <p> PRACTICE YOUR SEQUENCE. Then hit RECORD and play your chord pattern about 4 times (about 20 seconds worth of recording works well).</p>
+<button id="recordToggleButton">Record</button>
+<a id="downloadLink" style="display:none; color: yellow;">Download Recording</a>    
+<br><br>
+<div style="display: inline-block; margin-top: 10px;">
+  <button id="speedButton" style="display:none;">Speed up the recording?</button>
+  <input id="speedBpmInput" type="number" value="125" min="30" max="300" style="display:none; margin-left: 10px; width: 60px;" /> <span id="speedBpmText" style="display:none;">TARGET BPM</span>
+</div>
+<a id="speedDownloadLink" style="display:none; color: yellow;">Download Sped Up Recording</a>    
+	
+
+
+<br/><br/>
+<div style="display: inline-block;">
+  <button id="quantizeButton" style="display:none;">Quantize the recording? (experimental)</button>
+  <select id="quantizeValue" style="display:none; margin-left: 10px; vertical-align: middle;">
+    <option value="4">1/4 Note</option>
+    <option value="8">1/8 Note</option>
+    <option value="16" selected>1/16 Note</option>
+    <option value="32">1/32 Note</option>
+    <option value="64">1/64 Note</option>
+  </select>
+</div>
+<a id="quantizedDownloadLink" style="display:none; color: yellow;">Download Quantized Recording</a>    
+
+
+	
+	<p><br>
+    <b style="color: yellow;">STEP FOUR</b> <p> UPLOAD YOUR RECORDING to <a href="https://suno.com/create?wid=default" target="_blank" style="color: lightblue;">Suno</a> and choose COVER. Set the Audio Influence (try 100%), specify whatever style of music you want. <a href="https://suno.com/s/V47xTS6I58XkspHq" target="_blank" style="color: lightblue;">(quick QAED suno example)</a>
+  </p>
+
+ 
+
+<p><br>
+  <p style="text-align: left;">Get ready to easily produce some inspiring chord progression / pattern for your next Suno track! No more bland chords!</p>
+  <p style="text-align: left;">If you're happy to, please link any Suno tracks you've made to the reddit thread - We'd love to hear what you come up with! And share any cool key combinations (eg QAED) you find that make nice chord progressions we can try out!</p>
+</body>
+
+
+
+<br/><br/>
+
+<br/><br/>
+
+
+
+
+
+<br/><br/>
+
+
+
+<script>
+  const audioFiles = {
+    q: 'wavs/pianoChords/1.wav',
+    w: 'wavs/pianoChords/2.wav',
+    e: 'wavs/pianoChords/3.wav',
+    r: 'wavs/pianoChords/4.wav',
+    t: 'wavs/pianoChords/5.wav',
+    y: 'wavs/pianoChords/6.wav',
+    u: 'wavs/pianoChords/7.wav',
+    i: 'wavs/pianoChords/8.wav',
+    o: 'wavs/pianoChords/9.wav',
+    p: 'wavs/pianoChords/10.wav',
+    '[': 'wavs/pianoChords/11.wav',
+    ']': 'wavs/pianoChords/12.wav',
+    
+    a: 'wavs/pianoChords/21.wav',
+    s: 'wavs/pianoChords/22.wav',
+    d: 'wavs/pianoChords/23.wav',
+    f: 'wavs/pianoChords/24.wav',
+    g: 'wavs/pianoChords/25.wav',
+    h: 'wavs/pianoChords/26.wav',
+    j: 'wavs/pianoChords/27.wav',
+    k: 'wavs/pianoChords/28.wav',
+    l: 'wavs/pianoChords/29.wav',
+    ';': 'wavs/pianoChords/30.wav',
+    "'": 'wavs/pianoChords/31.wav',
+    
+    'enter': 'wavs/pianoChords/32.wav',
+    '\\': 'wavs/pianoChords/41.wav',
+    z: 'wavs/pianoChords/42.wav',
+    x: 'wavs/pianoChords/43.wav',
+    c: 'wavs/pianoChords/44.wav',
+    v: 'wavs/pianoChords/45.wav',
+    b: 'wavs/pianoChords/46.wav',
+    n: 'wavs/pianoChords/47.wav',
+    m: 'wavs/pianoChords/48.wav',
+    ',': 'wavs/pianoChords/49.wav',
+    '.': 'wavs/pianoChords/50.wav',
+    '/': 'wavs/pianoChords/51.wav',
+    'ShiftRight': 'wavs/pianoChords/52.wav',
+    
+    1: 'wavs/pianoChords/61.wav',
+    2: 'wavs/pianoChords/62.wav',
+    3: 'wavs/pianoChords/63.wav',
+    4: 'wavs/pianoChords/64.wav',
+    5: 'wavs/pianoChords/65.wav',
+    6: 'wavs/pianoChords/66.wav',
+    7: 'wavs/pianoChords/67.wav',
+    8: 'wavs/pianoChords/68.wav',
+    9: 'wavs/pianoChords/69.wav',
+    0: 'wavs/pianoChords/70.wav',
+    '-': 'wavs/pianoChords/71.wav',
+    '=': 'wavs/pianoChords/72.wav'
+  };
+
+  const audioBuffers = {};
+  let audioContext;
+  let isRecording = false;
+  let recordedEvents = [];
+
+  window.addEventListener('load', async () => {
+    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    await loadAudioBuffers();
+  });
+
+  async function loadAudioBuffers() {
+    const audioStatus = document.getElementById('audioStatus');
+    const progressBar = document.getElementById('progressBar');
+    audioStatus.textContent = 'Loading sounds...';
+    
+    const totalFiles = Object.keys(audioFiles).length;
+    let loadedFiles = 0;
+
+    for (const key in audioFiles) {
+      const response = await fetch(audioFiles[key]);
+      const arrayBuffer = await response.arrayBuffer();
+      audioBuffers[key] = await audioContext.decodeAudioData(arrayBuffer);
+      
+      loadedFiles++;
+      const progress = (loadedFiles / totalFiles) * 100;
+      progressBar.style.width = `${progress}%`;
+      audioStatus.textContent = `Loading chords... ${Math.round(progress)}%`;
+    }
+
+    console.log('Audio buffers loaded and ready!');
+    audioStatus.textContent = '✅ Status: Ready';
+    audioStatus.style.color = 'lightgreen';
+    progressBar.style.display = 'none';
+  }
+
+  const recordToggleButton = document.getElementById('recordToggleButton');
+
+  recordToggleButton.addEventListener('click', async () => {
+    if (!isRecording) {
+      isRecording = true;
+      recordedEvents = [];
+      recordToggleButton.textContent = 'Stop Recording';
+      console.log('Recording started');
+
+      // Hide the download links and controls when starting a new recording
+      document.getElementById('downloadLink').style.display = 'none';
+      document.getElementById('quantizedDownloadLink').style.display = 'none';
+      document.getElementById('speedDownloadLink').style.display = 'none';
+      document.getElementById('quantizeButton').style.display = 'none';
+      document.getElementById('quantizeValue').style.display = 'none';
+      document.getElementById('speedButton').style.display = 'none';
+      document.getElementById('speedBpmInput').style.display = 'none';
+      document.getElementById('speedBpmText').style.display = 'none';
+    } else {
+      isRecording = false;
+      recordToggleButton.textContent = 'Record';
+      console.log('Recording stopped. Rendering audio...');
+
+      if (recordedEvents.length === 0) return;
+
+      const firstEventTime = recordedEvents[0].time;
+      const lastEventTime = recordedEvents[recordedEvents.length - 1].time;
+      const duration = (lastEventTime - firstEventTime) + 2;
+
+      const offlineContext = new OfflineAudioContext(2, 44100 * duration, 44100);
+
+      recordedEvents.forEach(event => {
+        const chordKeys = getChordKeys(event.key);
+        chordKeys.forEach(note => {
+          const source = offlineContext.createBufferSource();
+          source.buffer = audioBuffers[note];
+          source.connect(offlineContext.destination);
+          source.start(event.time - firstEventTime);
+        });
+      });
+
+      const renderedBuffer = await offlineContext.startRendering();
+      const wavBlob = audioBufferToWav(renderedBuffer);
+      const url = URL.createObjectURL(wavBlob);
+
+      const downloadLink = document.getElementById('downloadLink');
+      downloadLink.href = url;
+      downloadLink.download = 'easy_cool_chords.wav';
+      downloadLink.style.display = 'inline';
+      downloadLink.textContent = 'Download Recording';
+
+      // Show all controls after recording is complete
+      document.getElementById('quantizeButton').style.display = 'inline';
+      document.getElementById('quantizeValue').style.display = 'inline';
+      document.getElementById('speedButton').style.display = 'inline';
+      document.getElementById('speedBpmInput').style.display = 'inline';
+      document.getElementById('speedBpmText').style.display = 'inline';
+      console.log('Audio rendering complete. Download link ready.');
+    }
+  });
+
+  //  listener for the quantize button
+  document.getElementById('quantizeButton').addEventListener('click', async () => {
+    if (recordedEvents.length === 0) return;
+
+    const quantizeValue = parseInt(document.getElementById('quantizeValue').value);
+    const tempo = parseInt(document.getElementById('tempoInput').value);
+    const processedEvents = quantizeEvents(recordedEvents, tempo, quantizeValue);
+
+    const firstEventTime = processedEvents[0].time;
+    const lastEventTime = processedEvents[processedEvents.length - 1].time;
+    const duration = (lastEventTime - firstEventTime) + 2;
+
+    const offlineContext = new OfflineAudioContext(2, 44100 * duration, 44100);
+
+    processedEvents.forEach(event => {
+      const chordKeys = getChordKeys(event.key);
+      chordKeys.forEach(note => {
+        const source = offlineContext.createBufferSource();
+        source.buffer = audioBuffers[note];
+        source.connect(offlineContext.destination);
+        source.start(event.time - firstEventTime);
+      });
+    });
+
+    const renderedBuffer = await offlineContext.startRendering();
+    const wavBlob = audioBufferToWav(renderedBuffer);
+    const url = URL.createObjectURL(wavBlob);
+
+    const quantizedDownloadLink = document.getElementById('quantizedDownloadLink');
+    quantizedDownloadLink.href = url;
+    quantizedDownloadLink.download = 'easy_cool_chords_quantized.wav';
+    quantizedDownloadLink.style.display = 'inline';
+    quantizedDownloadLink.textContent = 'Download Quantized Recording';
+  });
+
+  // event listener for the speed button
+  document.getElementById('speedButton').addEventListener('click', async () => {
+    if (recordedEvents.length === 0) return;
+
+    const targetBpm = parseInt(document.getElementById('speedBpmInput').value);
+    const originalBpm = parseInt(document.getElementById('tempoInput').value);
+    const speedRatio = targetBpm / originalBpm;
+
+    const firstEventTime = recordedEvents[0].time;
+    const lastEventTime = recordedEvents[recordedEvents.length - 1].time;
+    const originalDuration = lastEventTime - firstEventTime;
+    const newDuration = originalDuration / speedRatio;
+
+    const offlineContext = new OfflineAudioContext(2, 44100 * (newDuration + 2), 44100);
+
+    recordedEvents.forEach(event => {
+      const chordKeys = getChordKeys(event.key);
+      chordKeys.forEach(note => {
+        const source = offlineContext.createBufferSource();
+        source.buffer = audioBuffers[note];
+        source.connect(offlineContext.destination);
+        source.start((event.time - firstEventTime) / speedRatio);
+      });
+    });
+
+    const renderedBuffer = await offlineContext.startRendering();
+    const wavBlob = audioBufferToWav(renderedBuffer);
+    const url = URL.createObjectURL(wavBlob);
+
+    const speedDownloadLink = document.getElementById('speedDownloadLink');
+    speedDownloadLink.href = url;
+    speedDownloadLink.download = 'easy_cool_chords_sped_up.wav';
+    speedDownloadLink.style.display = 'inline';
+    speedDownloadLink.textContent = 'Download Sped Up Recording';
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (!audioContext) {
+      audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    }
+	
+	let key = event.key;
+	if (key === 'Enter') key = 'enter'; // normalize for your audio map
+	else if (key === '+') key = '+'; // handle plus key specially
+	else if (event.code === 'ShiftRight') key = 'ShiftRight'; // handle right shift specially
+	else key = key.toLowerCase();
+  
+    const chordKeys = getChordKeys(key);
+
+    chordKeys.forEach(note => {
+      const source = audioContext.createBufferSource();
+      source.buffer = audioBuffers[note];
+      source.connect(audioContext.destination);
+      source.start();
+    });
+
+    if (isRecording) {
+      recordedEvents.push({
+        key: key,
+        time: audioContext.currentTime
+      });
+    }
+  });
+
+function getChordKeys(key) {
+  const validKeys = [
+    'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']',
+    'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", 'enter',
+    '\\', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'ShiftRight',
+    '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '='
+  ];
+  return validKeys.includes(key) ? [key] : [];
+}
+
+  function audioBufferToWav(buffer) {
+    const numOfChan = buffer.numberOfChannels,
+      length = buffer.length * numOfChan * 2 + 44,
+      buffer2 = new ArrayBuffer(length),
+      view = new DataView(buffer2),
+      channels = [];
+
+    let i, sample, offset = 0, pos = 0;
+
+    setUint32(0x46464952);
+    setUint32(length - 8);
+    setUint32(0x45564157);
+
+    setUint32(0x20746d66);
+    setUint32(16);
+    setUint16(1);
+    setUint16(numOfChan);
+    setUint32(buffer.sampleRate);
+    setUint32(buffer.sampleRate * 2 * numOfChan);
+    setUint16(numOfChan * 2);
+    setUint16(16);
+
+    setUint32(0x61746164);
+    setUint32(length - pos - 4);
+
+    for (i = 0; i < buffer.numberOfChannels; i++)
+      channels.push(buffer.getChannelData(i));
+
+    while (pos < length) {
+      for (i = 0; i < numOfChan; i++) {
+        sample = Math.max(-1, Math.min(1, channels[i][offset]));
+        sample = sample < 0 ? sample * 0x8000 : sample * 0x7FFF;
+        view.setInt16(pos, sample, true);
+        pos += 2;
+      }
+      offset++;
+    }
+
+    return new Blob([buffer2], { type: 'audio/wav' });
+
+    function setUint16(data) {
+      view.setUint16(pos, data, true);
+      pos += 2;
+    }
+
+    function setUint32(data) {
+      view.setUint32(pos, data, true);
+      pos += 4;
+    }
+  }
+
+  function quantizeEvents(events, tempo, quantizeValue) {
+    const secondsPerBeat = 60 / tempo;
+    const quantizeStep = secondsPerBeat / (quantizeValue / 4);
+    return events.map(event => {
+      const relativeTime = event.time - events[0].time;
+      const quantizedTime = Math.round(relativeTime / quantizeStep) * quantizeStep;
+      return {
+        key: event.key,
+        time: events[0].time + quantizedTime
+      };
+    });
+  }
+
+  // Metronome logic
+  let metronomeInterval;
+  let isMetronomeRunning = false;
+
+  document.getElementById('metronomeButton').addEventListener('click', () => {
+    if (isMetronomeRunning) {
+      stopMetronome();
+    } else {
+      startMetronome();
+    }
+  });
+
+  function startMetronome() {
+    const tempo = parseInt(document.getElementById('tempoInput').value);
+    const interval = 60000 / tempo;
+
+    if (!audioContext) {
+      audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    }
+
+    metronomeInterval = setInterval(() => {
+      playClick();
+    }, interval);
+
+    isMetronomeRunning = true;
+    document.getElementById('metronomeButton').textContent = 'Stop Metronome';
+  }
+
+  function stopMetronome() {
+    clearInterval(metronomeInterval);
+    isMetronomeRunning = false;
+    document.getElementById('metronomeButton').textContent = 'Start Metronome';
+  }
+
+  function playClick() {
+    const osc = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+
+    osc.type = 'square';
+    osc.frequency.value = 1000;
+
+    gainNode.gain.setValueAtTime(1, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.05);
+
+    osc.connect(gainNode).connect(audioContext.destination);
+    osc.start(audioContext.currentTime);
+    osc.stop(audioContext.currentTime + 0.05);
+  }
+</script>
+</body>
+</html>
