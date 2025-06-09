@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Easy Cool Chords (for Suno)</title>
+<title>Easy Cool Chords</title>
 <style>
   body {
     background-color: black;
@@ -39,10 +39,6 @@
     -webkit-tap-highlight-color: transparent;
   }
   
-  .keyboard-key:active {
-    background-color: #666;
-  }
-  
   @media (max-width: 768px) {
     .mobile-keyboard {
       display: block;
@@ -51,10 +47,11 @@
 </style>
 </head>
 <body>
- <img src="page-logo.jpg" alt="EASY COOL CHORDS (FOR SUNO)" style="display: block; margin: 0 auto; max-width: 100%; width: 30%;">
+ <img src="page-logo.jpg" alt="EASY COOL CHORDS" style="display: block; margin: 0 auto; max-width: 100%; width: 30%;">
  
+ <button id="modeToggleButton" style="display: block; margin: 20px auto; padding: 10px 20px; font-size: 16px; background-color: #333; color: white; border: 1px solid #666; border-radius: 5px; cursor: pointer;">Advanced Mode</button>
 
- 
+ <div id="instructional-content">
  <p id="audioStatus" style="text-align: center; color: yellow;">Loading chords, please wait... </p>
  <div style="width: 50%; margin: 0 auto;">
    <div id="progressBar" style="width: 0%; height: 20px; background-color: yellow; transition: width 0.3s;"></div>
@@ -62,8 +59,8 @@
  
  </p>
 <br>
-  <p><b>Ready to have a massive influence on your next Suno track, so it uses your own cool chords, pattern and tempo?<b></p>
-    <a href="https://suno.com/playlist/10250bf6-c0bc-4166-90b4-fc75040f3c00" target="_blank" style="color: lightblue;">(Easy Cool Chords - quick Suno examples)</a>
+  <p><b>Ready to have a massive influence on your next track (Suno, Udio, Etc), so it uses your own cool chords, pattern and tempo?<b></p>
+    <a href="https://suno.com/playlist/10250bf6-c0bc-4166-90b4-fc75040f3c00" target="_blank" style="color: lightblue;">(Easy Cool Chords - quick examples with Suno)</a>
   <p><br>
     <b style="color: yellow;">STEP ONE</b> <p>START THE METRONOME to guide your timing (eg 125 bpm for House) 
 	<p>
@@ -145,8 +142,8 @@
         <li>It's easier to find chords that work well together if you stick to chords from ONE keyboard row (eg a row beginning with 1, Q, A or \ )
         <li>Basic chords are on the number row, with cool variations of those chords on the rows beneith
         <li>You can improve your rhythm timing if you set the metronome to a slower tempo. Then after recording, choose to increase the tempo timing when asked.
-        <li>It doesn't matter that Easy Cool Chords uses piano. Suno will change the piano to whatever instrument fits the style you've requested.
-        <li>It doesn't matter if the timing of your chords are a bit off / wonky. Suno can straighten them out. (Optionally you can Quantize your recording, or record it slowly then speed it up, at Step 3).
+        <li>If using Suno - it doesn't matter that Easy Cool Chords uses piano. Suno will change the piano to whatever instrument fits the style you've requested.
+        <li>If using Suno - It doesn't matter if the timing of your chords are a bit off / wonky. AI usually straightens them out. (Optionally you can Quantize your recording, or record it slowly then speed it up, at Step 3).
         <li>If you hear no sound when pressing a keyboard key, click anywhere on this webpage first, and ensure it says Status: Ready at the top of this page
       <label>
       <br>
@@ -155,13 +152,22 @@
 
 	<p><br>
     <b style="color: yellow;">STEP THREE</b> <p> PRACTICE YOUR SEQUENCE. Then hit RECORD and play your chord pattern about 4 times (about 20 seconds worth of recording works well).</p>
-<button id="recordToggleButton" style="font-size: 16px;">Record</button>
+<button id="recordToggleButton" style="font-size: 16px; border: 2px solid red; text-transform: uppercase;">Record</button>
 <a id="downloadLink" style="display:none; color: yellow;">Download Recording</a>    
 <br><br>
+<button id="chordLogButton" style="font-size: 16px;">Show Chord Log</button>
+<button id="clearLogButton" style="font-size: 16px; margin-left: 10px;">Clear Log</button>
+<div id="chordLogContent" style="display: none; margin-top: 10px; padding: 10px; background-color: #333; border-radius: 5px;">
+  <h3 style="margin-top: 0;">Chords were triggered by these keys:</h3>
+  <div id="chordLogList"></div>
+</div>
+<br>
 <div style="display: inline-block; margin-top: 10px;">
   <button id="speedButton" style="display:none; font-size: 16px;">Speed up the recording?</button>
   <input id="speedBpmInput" type="number" value="125" min="30" max="300" style="display:none; margin-left: 10px; width: 60px; font-size: 16px;" /> <span id="speedBpmText" style="display:none; font-size: 16px;">TARGET BPM</span>
 </div>
+
+
 <a id="speedDownloadLink" style="display:none; color: yellow;">Download Sped Up Recording</a>    
 	
 
@@ -182,14 +188,14 @@
 
 	
 	<p><br>
-    <b style="color: yellow;">STEP FOUR</b> <p> UPLOAD YOUR RECORDING to <a href="https://suno.com/create?wid=default" target="_blank" style="color: lightblue;">Suno</a> and choose COVER. Set the Audio Influence (try 100%), specify whatever style of music you want. <br><a href="https://suno.com/playlist/10250bf6-c0bc-4166-90b4-fc75040f3c00" target="_blank" style="color: lightblue;">(Easy Cool Chords - quick Suno examples)</a>
+    <b style="color: yellow;">STEP FOUR (For Suno Users etc)</b> <p> UPLOAD YOUR RECORDING to <a href="https://suno.com/create?wid=default" target="_blank" style="color: lightblue;">Suno</a> and choose COVER. Set the Audio Influence (try 100%), specify whatever style of music you want. Similar process may apply to other AI music generators.<br><a href="https://suno.com/playlist/10250bf6-c0bc-4166-90b4-fc75040f3c00" target="_blank" style="color: lightblue;">(Easy Cool Chords - quick examples using Suno)</a>
       <p><br>
   </p>
 
  
 
 <p><br>
-  <p style="text-align: left;">Get ready to easily produce some inspiring chord progression / pattern for your next Suno track! No more bland chords! 
+  <p style="text-align: left;">Get ready to easily produce some inspiring chord progression / pattern for your next track! No more bland chords! 
     <br>
     Post any interesting chord progression patterns you came up with so we can try them out too! Eg C J L ; '</p>
     <br>
@@ -203,9 +209,7 @@
   
 
 
-</body>
-
-
+</div>
 
 <br/><br/>
 
@@ -278,6 +282,72 @@
   let audioContext;
   let isRecording = false;
   let recordedEvents = [];
+  let chordLog = [];
+  let isChordLogVisible = false;
+
+  // Define the musical scale and root chords
+  const musicalScale = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+  const rootChords = {
+    '1': ['C', 'E', 'G'],  // C major
+    'q': ['C', 'G', 'B♭', 'D', 'F'],
+    'a': ['C', 'B♭', 'D', 'E', 'A'],
+    '\\': ['C', 'E', 'G', 'B', 'D']
+  };
+
+  // Function to transpose a note by a given number of semitones
+  function transposeNote(note, semitones) {
+    // Handle flat notes by converting to sharp equivalent
+    const noteMap = {
+      'B♭': 'A#',
+      'E♭': 'D#',
+      'A♭': 'G#',
+      'D♭': 'C#',
+      'G♭': 'F#'
+    };
+    
+    let normalizedNote = noteMap[note] || note;
+    let index = musicalScale.indexOf(normalizedNote);
+    if (index === -1) return note; // Return original if not found
+    
+    // Calculate new index with wrapping
+    let newIndex = (index + semitones) % 12;
+    if (newIndex < 0) newIndex += 12;
+    
+    return musicalScale[newIndex];
+  }
+
+  // Function to get the notes for a given key
+  function getChordNotes(key) {
+    // Find which row the key belongs to
+    const rows = [
+      ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '='],
+      ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']'],
+      ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", 'enter'],
+      ['\\', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'ShiftRight']
+    ];
+
+    for (let row of rows) {
+      const index = row.indexOf(key);
+      if (index !== -1) {
+        const rootKey = row[0];
+        const rootNotes = rootChords[rootKey];
+        if (!rootNotes) return null;
+
+        // Calculate how many semitones to transpose
+        const semitones = index;
+        
+        // Transpose each note
+        return rootNotes.map(note => transposeNote(note, semitones));
+      }
+    }
+    return null;
+  }
+
+  // Function to format chord notes for display
+  function formatChordNotes(notes) {
+    if (!notes) return '';
+    return ` (notes are ${notes.join(', ')})`;
+  }
 
   window.addEventListener('load', async () => {
     audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -295,6 +365,14 @@
         const keyValue = event.target.dataset.key;
         if (keyValue) {
           const chordKeys = getChordKeys(keyValue);
+          if (chordKeys.length > 0) {
+            const notes = getChordNotes(keyValue);
+            chordLog.push(keyValue + formatChordNotes(notes));
+            if (isChordLogVisible) {
+              const logList = document.getElementById('chordLogList');
+              logList.innerHTML = chordLog.map(entry => `<div>${entry}</div>`).join('');
+            }
+          }
           chordKeys.forEach(note => {
             const source = audioContext.createBufferSource();
             source.buffer = audioBuffers[note];
@@ -321,6 +399,14 @@
         const keyValue = event.target.dataset.key;
         if (keyValue) {
           const chordKeys = getChordKeys(keyValue);
+          if (chordKeys.length > 0) {
+            const notes = getChordNotes(keyValue);
+            chordLog.push(keyValue + formatChordNotes(notes));
+            if (isChordLogVisible) {
+              const logList = document.getElementById('chordLogList');
+              logList.innerHTML = chordLog.map(entry => `<div>${entry}</div>`).join('');
+            }
+          }
           chordKeys.forEach(note => {
             const source = audioContext.createBufferSource();
             source.buffer = audioBuffers[note];
@@ -359,8 +445,7 @@
     }
 
     console.log('Audio buffers loaded and ready!');
-    audioStatus.textContent = '✅ Status: Ready';
-    audioStatus.style.color = 'lightgreen';
+    audioStatus.style.display = 'none';
     progressBar.style.display = 'none';
   }
 
@@ -509,6 +594,15 @@
   
     const chordKeys = getChordKeys(key);
 
+    if (chordKeys.length > 0) {
+      const notes = getChordNotes(key);
+      chordLog.push(key + formatChordNotes(notes));
+      if (isChordLogVisible) {
+        const logList = document.getElementById('chordLogList');
+        logList.innerHTML = chordLog.map(entry => `<div>${entry}</div>`).join('');
+      }
+    }
+
     chordKeys.forEach(note => {
       const source = audioContext.createBufferSource();
       source.buffer = audioBuffers[note];
@@ -654,6 +748,58 @@
       keyboard.style.display = 'none';
     } else {
       keyboard.style.display = 'block';
+    }
+  });
+
+  // Add mode toggle functionality
+  let isAdvancedMode = false;
+  const modeToggleButton = document.getElementById('modeToggleButton');
+  const instructionalContent = document.getElementById('instructional-content');
+
+  // Function to toggle mode
+  function toggleMode() {
+    isAdvancedMode = !isAdvancedMode;
+    modeToggleButton.textContent = isAdvancedMode ? 'Switch to Instructional Mode' : 'Switch to Advanced Mode';
+    
+    // Toggle visibility of instructional content
+    const elements = instructionalContent.querySelectorAll('p, h2, ol');
+    elements.forEach(element => {
+      // Skip the audio status element and metronome-related elements
+      if (element.id !== 'audioStatus' && 
+          !element.textContent.includes('START THE METRONOME') &&
+          !element.textContent.includes('BPM')) {
+        element.style.display = isAdvancedMode ? 'none' : 'block';
+      }
+    });
+
+    // Ensure metronome button and input remain visible
+    const metronomeButton = document.getElementById('metronomeButton');
+    const tempoInput = document.getElementById('tempoInput');
+    if (metronomeButton) metronomeButton.style.display = 'inline';
+    if (tempoInput) tempoInput.style.display = 'inline';
+  }
+
+  modeToggleButton.addEventListener('click', toggleMode);
+
+  // Add chord log button functionality
+  document.getElementById('chordLogButton').addEventListener('click', () => {
+    const logContent = document.getElementById('chordLogContent');
+    const logList = document.getElementById('chordLogList');
+    
+    isChordLogVisible = !isChordLogVisible;
+    logContent.style.display = isChordLogVisible ? 'block' : 'none';
+    
+    if (isChordLogVisible) {
+      logList.innerHTML = chordLog.map(entry => `<div>${entry}</div>`).join('');
+    }
+  });
+
+  // Add clear log button functionality
+  document.getElementById('clearLogButton').addEventListener('click', () => {
+    chordLog = [];
+    if (isChordLogVisible) {
+      const logList = document.getElementById('chordLogList');
+      logList.innerHTML = '';
     }
   });
 </script>
