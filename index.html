@@ -10,6 +10,44 @@
     font-size: 16px;
     font-family: Arial, sans-serif;
   }
+  
+  /* Mobile keyboard styles */
+  .mobile-keyboard {
+    display: none;
+    margin: 20px auto;
+    max-width: 100%;
+    padding: 10px;
+  }
+  
+  .keyboard-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+  }
+  
+  .keyboard-key {
+    background-color: #333;
+    border: 1px solid #666;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 2px;
+    padding: 10px;
+    text-align: center;
+    width: 40px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .keyboard-key:active {
+    background-color: #666;
+  }
+  
+  @media (max-width: 768px) {
+    .mobile-keyboard {
+      display: block;
+    }
+  }
 </style>
 </head>
 <body>
@@ -29,16 +67,81 @@
   <p><br>
     <b style="color: yellow;">STEP ONE</b> <p>START THE METRONOME to guide your timing (eg 125 bpm for House) 
 	<p>
-	<button id="metronomeButton">Start Metronome</button>
-<input id="tempoInput" type="number" value="125" min="30" max="300" style="width: 60px;" /> BPM
+	<button id="metronomeButton" style="font-size: 16px;">Start Metronome</button>
+<input id="tempoInput" type="number" value="125" min="30" max="300" style="width: 60px; font-size: 16px;" /> BPM
 <p><br>
 
     <b style="color: yellow;">STEP TWO</b> <p> HIT KEYBOARD LETTERS to work out some chords that you like, and play them in a rhythm you like (eg, E P Q P or Q A E D or C J L) <a href="cool_chords_QAED_recording.wav" target="_blank" style="color: lightblue;">(quick QAED recording example)</a>
 
+    <!-- Debug button for mobile keyboard -->
+    <div style="text-align: center; margin-top: 20px;">
+      <button id="debugKeyboardButton" style="background-color: #333; color: white; border: 1px solid #666; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Mobile user? Click here to open a Keyboard</button>
+    </div>
+
+    <!-- Mobile keyboard -->
+    <div class="mobile-keyboard">
+      <div class="keyboard-row">
+        <div class="keyboard-key" data-key="1">1</div>
+        <div class="keyboard-key" data-key="2">2</div>
+        <div class="keyboard-key" data-key="3">3</div>
+        <div class="keyboard-key" data-key="4">4</div>
+        <div class="keyboard-key" data-key="5">5</div>
+        <div class="keyboard-key" data-key="6">6</div>
+        <div class="keyboard-key" data-key="7">7</div>
+        <div class="keyboard-key" data-key="8">8</div>
+        <div class="keyboard-key" data-key="9">9</div>
+        <div class="keyboard-key" data-key="0">0</div>
+        <div class="keyboard-key" data-key="-">-</div>
+        <div class="keyboard-key" data-key="=">=</div>
+      </div>
+      <div class="keyboard-row">
+        <div class="keyboard-key" data-key="q">Q</div>
+        <div class="keyboard-key" data-key="w">W</div>
+        <div class="keyboard-key" data-key="e">E</div>
+        <div class="keyboard-key" data-key="r">R</div>
+        <div class="keyboard-key" data-key="t">T</div>
+        <div class="keyboard-key" data-key="y">Y</div>
+        <div class="keyboard-key" data-key="u">U</div>
+        <div class="keyboard-key" data-key="i">I</div>
+        <div class="keyboard-key" data-key="o">O</div>
+        <div class="keyboard-key" data-key="p">P</div>
+        <div class="keyboard-key" data-key="[">[</div>
+        <div class="keyboard-key" data-key="]">]</div>
+      </div>
+      <div class="keyboard-row">
+        <div class="keyboard-key" data-key="a">A</div>
+        <div class="keyboard-key" data-key="s">S</div>
+        <div class="keyboard-key" data-key="d">D</div>
+        <div class="keyboard-key" data-key="f">F</div>
+        <div class="keyboard-key" data-key="g">G</div>
+        <div class="keyboard-key" data-key="h">H</div>
+        <div class="keyboard-key" data-key="j">J</div>
+        <div class="keyboard-key" data-key="k">K</div>
+        <div class="keyboard-key" data-key="l">L</div>
+        <div class="keyboard-key" data-key=";">;</div>
+        <div class="keyboard-key" data-key="'">'</div>
+        <div class="keyboard-key" data-key="enter">Enter</div>
+      </div>
+      <div class="keyboard-row">
+        <div class="keyboard-key" data-key="\">\</div>
+        <div class="keyboard-key" data-key="z">Z</div>
+        <div class="keyboard-key" data-key="x">X</div>
+        <div class="keyboard-key" data-key="c">C</div>
+        <div class="keyboard-key" data-key="v">V</div>
+        <div class="keyboard-key" data-key="b">B</div>
+        <div class="keyboard-key" data-key="n">N</div>
+        <div class="keyboard-key" data-key="m">M</div>
+        <div class="keyboard-key" data-key=",">,</div>
+        <div class="keyboard-key" data-key=".">.</div>
+        <div class="keyboard-key" data-key="/">/</div>
+        <div class="keyboard-key" data-key="ShiftRight">Shift</div>
+      </div>
+    </div>
+
     <p><br>
       <h2 style="color: yellow;">Tips:</h2>
       <ol>
-        <li>Easy Cool Chords is not currently designed for Mobile. Please use desktop. (Chrome, Edge, Netscape Navigator)
+        <li>Easy Cool Chords is experimental on Mobile devices, open the keyboard and hold your device horizontally.
         <li>It's easier to find chords that work well together if you stick to chords from ONE keyboard row (eg a row beginning with 1, Q, A or \ )
         <li>Basic chords are on the number row, with cool variations of those chords on the rows beneith
         <li>You can improve your rhythm timing if you set the metronome to a slower tempo. Then after recording, choose to increase the tempo timing when asked.
@@ -52,12 +155,12 @@
 
 	<p><br>
     <b style="color: yellow;">STEP THREE</b> <p> PRACTICE YOUR SEQUENCE. Then hit RECORD and play your chord pattern about 4 times (about 20 seconds worth of recording works well).</p>
-<button id="recordToggleButton">Record</button>
+<button id="recordToggleButton" style="font-size: 16px;">Record</button>
 <a id="downloadLink" style="display:none; color: yellow;">Download Recording</a>    
 <br><br>
 <div style="display: inline-block; margin-top: 10px;">
-  <button id="speedButton" style="display:none;">Speed up the recording?</button>
-  <input id="speedBpmInput" type="number" value="125" min="30" max="300" style="display:none; margin-left: 10px; width: 60px;" /> <span id="speedBpmText" style="display:none;">TARGET BPM</span>
+  <button id="speedButton" style="display:none; font-size: 16px;">Speed up the recording?</button>
+  <input id="speedBpmInput" type="number" value="125" min="30" max="300" style="display:none; margin-left: 10px; width: 60px; font-size: 16px;" /> <span id="speedBpmText" style="display:none; font-size: 16px;">TARGET BPM</span>
 </div>
 <a id="speedDownloadLink" style="display:none; color: yellow;">Download Sped Up Recording</a>    
 	
@@ -65,8 +168,8 @@
 
 <br/><br/>
 <div style="display: inline-block;">
-  <button id="quantizeButton" style="display:none;">Quantize the recording? (experimental)</button>
-  <select id="quantizeValue" style="display:none; margin-left: 10px; vertical-align: middle;">
+  <button id="quantizeButton" style="display:none; font-size: 16px;">Quantize the recording? (experimental)</button>
+  <select id="quantizeValue" style="display:none; margin-left: 10px; vertical-align: middle; font-size: 16px;">
     <option value="4">1/4 Note</option>
     <option value="8">1/8 Note</option>
     <option value="16" selected>1/16 Note</option>
@@ -92,7 +195,13 @@
     <br>
     Updates: We're looking into adding further features, like auto-pattern. (specify your chord letters, and select a style, eg bossa nova) 
     <br>
+
+    <br
+    <div style="text-align: left;">
+      <img src="https://hitscounter.dev/api/hit?url=easycoolchords.com&label=Visitors&icon=music-note-beamed&color=%23ffda6a">
+    </div>
   
+
 
 </body>
 
@@ -173,6 +282,61 @@
   window.addEventListener('load', async () => {
     audioContext = new (window.AudioContext || window.webkitAudioContext)();
     await loadAudioBuffers();
+    
+    // Add mobile keyboard event listeners
+    document.querySelectorAll('.keyboard-key').forEach(key => {
+      // Use mousedown for mouse events
+      key.addEventListener('mousedown', (event) => {
+        event.preventDefault(); // Prevent default to avoid text selection
+        if (!audioContext) {
+          audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        
+        const keyValue = event.target.dataset.key;
+        if (keyValue) {
+          const chordKeys = getChordKeys(keyValue);
+          chordKeys.forEach(note => {
+            const source = audioContext.createBufferSource();
+            source.buffer = audioBuffers[note];
+            source.connect(audioContext.destination);
+            source.start();
+          });
+
+          if (isRecording) {
+            recordedEvents.push({
+              key: keyValue,
+              time: audioContext.currentTime
+            });
+          }
+        }
+      });
+
+      // Use touchstart for touch events
+      key.addEventListener('touchstart', (event) => {
+        event.preventDefault(); // Prevent default to avoid text selection
+        if (!audioContext) {
+          audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        
+        const keyValue = event.target.dataset.key;
+        if (keyValue) {
+          const chordKeys = getChordKeys(keyValue);
+          chordKeys.forEach(note => {
+            const source = audioContext.createBufferSource();
+            source.buffer = audioBuffers[note];
+            source.connect(audioContext.destination);
+            source.start();
+          });
+
+          if (isRecording) {
+            recordedEvents.push({
+              key: keyValue,
+              time: audioContext.currentTime
+            });
+          }
+        }
+      });
+    });
   });
 
   async function loadAudioBuffers() {
@@ -336,12 +500,12 @@
     if (!audioContext) {
       audioContext = new (window.AudioContext || window.webkitAudioContext)();
     }
-	
-	let key = event.key;
-	if (key === 'Enter') key = 'enter'; // normalize for your audio map
-	else if (key === '+') key = '+'; // handle plus key specially
-	else if (event.code === 'ShiftRight') key = 'ShiftRight'; // handle right shift specially
-	else key = key.toLowerCase();
+    
+    let key = event.key;
+    if (key === 'Enter') key = 'enter'; // normalize for your audio map
+    else if (key === '+') key = '+'; // handle plus key specially
+    else if (event.code === 'ShiftRight') key = 'ShiftRight'; // handle right shift specially
+    else key = key.toLowerCase();
   
     const chordKeys = getChordKeys(key);
 
@@ -360,15 +524,15 @@
     }
   });
 
-function getChordKeys(key) {
-  const validKeys = [
-    'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']',
-    'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", 'enter',
-    '\\', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'ShiftRight',
-    '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '='
-  ];
-  return validKeys.includes(key) ? [key] : [];
-}
+  function getChordKeys(key) {
+    const validKeys = [
+      'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']',
+      'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", 'enter',
+      '\\', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'ShiftRight',
+      '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '='
+    ];
+    return validKeys.includes(key) ? [key] : [];
+  }
 
   function audioBufferToWav(buffer) {
     const numOfChan = buffer.numberOfChannels,
@@ -482,6 +646,16 @@ function getChordKeys(key) {
     osc.start(audioContext.currentTime);
     osc.stop(audioContext.currentTime + 0.05);
   }
+
+  // Add debug keyboard button functionality
+  document.getElementById('debugKeyboardButton').addEventListener('click', () => {
+    const keyboard = document.querySelector('.mobile-keyboard');
+    if (keyboard.style.display === 'block') {
+      keyboard.style.display = 'none';
+    } else {
+      keyboard.style.display = 'block';
+    }
+  });
 </script>
 </body>
 </html>
