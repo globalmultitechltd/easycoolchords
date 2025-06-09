@@ -60,11 +60,12 @@
  </p>
 <br>
   <p><b>Ready to have a massive influence on your next track (Suno, Udio, Etc), so it uses your own cool chords, pattern and tempo?<b></p>
-    <a href="https://suno.com/playlist/10250bf6-c0bc-4166-90b4-fc75040f3c00" target="_blank" style="color: lightblue;">(Easy Cool Chords - quick examples with Suno)</a>
-  <p><br>
-    <b style="color: yellow;">STEP ONE</b> <p>START THE METRONOME to guide your timing (eg 125 bpm for House)</p>
+    <a href="https://suno.com/playlist/10250bf6-c0bc-4166-90b4-fc75040f3c00" target="_blank" style="color: lightblue;">(Easy Cool Chords - quick examples with Suno)</a></p><p>
+  <br>
+    
+    <b style="color: yellow;">STEP ONE</b> <br><p>START THE METRONOME to guide your timing (eg 125 bpm for House)</p>
     <div id="metronomeControls">
-      <button id="metronomeButton" style="font-size: 16px;">Start Metronome</button>
+      <br><button id="metronomeButton" style="font-size: 16px;">Start Metronome</button>
       <input id="tempoInput" type="number" value="125" min="30" max="300" style="width: 60px; font-size: 16px;" /> BPM
     </div>
     <p><br>
@@ -154,22 +155,22 @@
 	<p><br>
     <b style="color: yellow;">STEP THREE</b> <p> PRACTICE YOUR SEQUENCE. Then hit RECORD and play your chord pattern about 4 times (about 20 seconds worth of recording works well).</p>
 <button id="recordToggleButton" style="font-size: 16px; border: 2px solid red; text-transform: uppercase;">Record</button>
-<a id="downloadLink" style="display:none; color: yellow;">Download Recording</a>    
+<a id="downloadLink" style="display:none; color: yellow;">Download</a>    
 <br><br>
 <button id="chordLogButton" style="font-size: 16px;">Show Chord Log</button>
 <button id="clearLogButton" style="font-size: 16px; margin-left: 10px;">Clear Log</button>
 <div id="chordLogContent" style="display: none; margin-top: 10px; padding: 10px; background-color: #333; border-radius: 5px;">
-  <h3 style="margin-top: 0;">Chords were triggered by these keys:</h3>
+  <h3 style="margin-top: 0;">You played:</h3>
   <div id="chordLogList"></div>
 </div>
 <br>
 <div style="display: inline-block; margin-top: 10px;">
-  <button id="speedButton" style="display:none; font-size: 16px;">Speed up the recording?</button>
+  <button id="speedButton" style="display:none; font-size: 16px;">Change speed of recording?</button>
   <input id="speedBpmInput" type="number" value="125" min="30" max="300" style="display:none; margin-left: 10px; width: 60px; font-size: 16px;" /> <span id="speedBpmText" style="display:none; font-size: 16px;">TARGET BPM</span>
 </div>
 
 
-<a id="speedDownloadLink" style="display:none; color: yellow;">Download Sped Up Recording</a>    
+<a id="speedDownloadLink" style="display:none; color: yellow;">Download</a>    
 	
 
 
@@ -184,7 +185,7 @@
     <option value="64">1/64 Note</option>
   </select>
 </div>
-<a id="quantizedDownloadLink" style="display:none; color: yellow;">Download Quantized Recording</a>    
+<a id="quantizedDownloadLink" style="display:none; color: yellow;">Download</a>    
 
 
 	
@@ -499,7 +500,7 @@
       downloadLink.href = url;
       downloadLink.download = 'easy_cool_chords.wav';
       downloadLink.style.display = 'inline';
-      downloadLink.textContent = 'Download Recording';
+      downloadLink.textContent = 'Download';
 
       // Show all controls after recording is complete
       document.getElementById('quantizeButton').style.display = 'inline';
@@ -541,9 +542,9 @@
 
     const quantizedDownloadLink = document.getElementById('quantizedDownloadLink');
     quantizedDownloadLink.href = url;
-    quantizedDownloadLink.download = 'easy_cool_chords_quantized.wav';
+    quantizedDownloadLink.download = `easy_cool_chords_quantized_${quantizeValue}th.wav`;
     quantizedDownloadLink.style.display = 'inline';
-    quantizedDownloadLink.textContent = 'Download Quantized Recording';
+    quantizedDownloadLink.textContent = 'Download';
   });
 
   // event listener for the speed button
@@ -577,9 +578,9 @@
 
     const speedDownloadLink = document.getElementById('speedDownloadLink');
     speedDownloadLink.href = url;
-    speedDownloadLink.download = 'easy_cool_chords_sped_up.wav';
+    speedDownloadLink.download = `easy_cool_chords_${targetBpm}bpm.wav`;
     speedDownloadLink.style.display = 'inline';
-    speedDownloadLink.textContent = 'Download Sped Up Recording';
+    speedDownloadLink.textContent = 'Download';
   });
 
   document.addEventListener('keydown', (event) => {
