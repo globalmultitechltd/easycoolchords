@@ -62,11 +62,12 @@
   <p><b>Ready to have a massive influence on your next track (Suno, Udio, Etc), so it uses your own cool chords, pattern and tempo?<b></p>
     <a href="https://suno.com/playlist/10250bf6-c0bc-4166-90b4-fc75040f3c00" target="_blank" style="color: lightblue;">(Easy Cool Chords - quick examples with Suno)</a>
   <p><br>
-    <b style="color: yellow;">STEP ONE</b> <p>START THE METRONOME to guide your timing (eg 125 bpm for House) 
-	<p>
-	<button id="metronomeButton" style="font-size: 16px;">Start Metronome</button>
-<input id="tempoInput" type="number" value="125" min="30" max="300" style="width: 60px; font-size: 16px;" /> BPM
-<p><br>
+    <b style="color: yellow;">STEP ONE</b> <p>START THE METRONOME to guide your timing (eg 125 bpm for House)</p>
+    <div id="metronomeControls">
+      <button id="metronomeButton" style="font-size: 16px;">Start Metronome</button>
+      <input id="tempoInput" type="number" value="125" min="30" max="300" style="width: 60px; font-size: 16px;" /> BPM
+    </div>
+    <p><br>
 
     <b style="color: yellow;">STEP TWO</b> <p> HIT KEYBOARD LETTERS to work out some chords that you like, and play them in a rhythm you like (eg, E P Q P or Q A E D or C J L) <a href="cool_chords_QAED_recording.wav" target="_blank" style="color: lightblue;">(quick QAED recording example)</a>
 
@@ -764,19 +765,23 @@
     // Toggle visibility of instructional content
     const elements = instructionalContent.querySelectorAll('p, h2, ol');
     elements.forEach(element => {
-      // Skip the audio status element and metronome-related elements
-      if (element.id !== 'audioStatus' && 
-          !element.textContent.includes('START THE METRONOME') &&
-          !element.textContent.includes('BPM')) {
-        element.style.display = isAdvancedMode ? 'none' : 'block';
+      // Skip the audio status element
+      if (element.id !== 'audioStatus') {
+        // Hide metronome instruction text in advanced mode
+        if (element.textContent.includes('START THE METRONOME')) {
+          element.style.display = isAdvancedMode ? 'none' : 'block';
+        } else {
+          // Handle other instructional content
+          element.style.display = isAdvancedMode ? 'none' : 'block';
+        }
       }
     });
 
-    // Ensure metronome button and input remain visible
-    const metronomeButton = document.getElementById('metronomeButton');
-    const tempoInput = document.getElementById('tempoInput');
-    if (metronomeButton) metronomeButton.style.display = 'inline';
-    if (tempoInput) tempoInput.style.display = 'inline';
+    // Keep metronome controls visible in both modes
+    const metronomeControls = document.getElementById('metronomeControls');
+    if (metronomeControls) {
+      metronomeControls.style.display = 'block';
+    }
   }
 
   modeToggleButton.addEventListener('click', toggleMode);
