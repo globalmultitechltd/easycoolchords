@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <title>Easy Cool Chords</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎵</text></svg>">
 <style>
   body {
     background-color: black;
@@ -49,9 +50,14 @@
 <body>
  <img src="page-logo.jpg" alt="EASY COOL CHORDS" style="display: block; margin: 0 auto; max-width: 100%; width: 30%;">
  
- <button id="modeToggleButton" style="display: block; margin: 20px auto; padding: 10px 20px; font-size: 16px; background-color: #333; color: white; border: 1px solid #666; border-radius: 5px; cursor: pointer;">Switch to Advanced Mode</button>
+ <div style="margin: 30px 0; text-align: center;">
+   <p><b>Ready to have a massive influence on your next track (Suno, Udio, Etc), so it uses your own cool chords, pattern and tempo? Use the Live Recording or Rhythm & Chord Designer sections below.<b></p>
+   <a href="https://suno.com/playlist/10250bf6-c0bc-4166-90b4-fc75040f3c00" target="_blank" style="color: lightblue;">(Easy Cool Chords - quick examples with Suno)</a>
+ </div>
 
- <div id="instructional-content">
+ <button id="modeToggleButton" style="display: block; margin: 20px auto; padding: 10px 20px; font-size: 16px; background-color: #333; color: white; border: 1px solid #666; border-radius: 5px; cursor: pointer;">Hide Instructions</button>
+
+ <div id="instructional-content" style="margin-top: 50px; padding: 20px; background-color: #222; border-radius: 10px;">
  <p id="audioStatus" style="text-align: center; color: yellow;">Loading chords, please wait... </p>
  <div style="width: 50%; margin: 0 auto;">
    <div id="progressBar" style="width: 0%; height: 20px; background-color: yellow; transition: width 0.3s;"></div>
@@ -59,18 +65,18 @@
  
  </p>
 <br>
-  <p><b>Ready to have a massive influence on your next track (Suno, Udio, Etc), so it uses your own cool chords, pattern and tempo?<b></p>
-    <a href="https://suno.com/playlist/10250bf6-c0bc-4166-90b4-fc75040f3c00" target="_blank" style="color: lightblue;">(Easy Cool Chords - quick examples with Suno)</a></p><p>
-  <br>
-    
-    <b style="color: yellow;">STEP ONE</b> <br><p>START THE METRONOME to guide your timing (eg 125 bpm for House)</p>
+<h2 style="color: yellow;">LIVE RECORDING</h2>
+<br>
+  <h2 style="color: yellow;">STEP ONE</h2>
+    <p>START THE METRONOME to guide your timing (eg 125 bpm for House)</p>
     <div id="metronomeControls">
       <br><button id="metronomeButton" style="font-size: 16px;">Start Metronome</button>
       <input id="tempoInput" type="number" value="125" min="30" max="300" style="width: 60px; font-size: 16px;" /> BPM
     </div>
     <p><br>
 
-    <b style="color: yellow;">STEP TWO</b> <p> HIT KEYBOARD LETTERS to work out some chords that you like, and play them in a rhythm you like (eg, E P Q P or Q A E D or C J L) <a href="cool_chords_QAED_recording.wav" target="_blank" style="color: lightblue;">(quick QAED recording example)</a>
+    <h2 style="color: yellow;">STEP TWO</h2>
+    <p>HIT ANY KEYBOARD LETTERS ON A ROW to work out some chords that you like, and play them in a rhythm you like (eg, E P Q P or Q A E D or C J L) <a href="cool_chords_QAED_recording.wav" target="_blank" style="color: lightblue;">(quick QAED recording example)</a></p>
 
     <!-- Debug button for mobile keyboard -->
     <div style="text-align: center; margin-top: 20px;">
@@ -138,92 +144,166 @@
     </div>
 
     <p><br>
-      <h2 style="color: yellow;">Tips:</h2>
+      <h2 style="color: yellow;">Tips</h2>
       <ol>
-        <li>On Mobile, flip device horizontally for keyboard space. Performance on some mobiles can be laggy, Desktop usage advised. 
+        <li>On Mobile, flip device horizontally for keyboard space. Live Recording mode on some mobiles can be laggy (Desktop usage advised). 
         <li>It's easier to find chords that work well together if you stick to chords from ONE keyboard row (eg a row beginning with 1, Q, A or \ )
         <li>Basic chords are on the number row, with cool variations of those chords on the rows beneith
         <li>You can improve your rhythm timing if you set the metronome to a slower tempo. Then after recording, choose to increase the tempo timing when asked.
         <li>If using Suno - it doesn't matter that Easy Cool Chords uses piano. Suno will change the piano to whatever instrument fits the style you've requested.
         <li>If using Suno - It doesn't matter if the timing of your chords are a bit off / wonky. AI usually straightens them out. (Optionally you can Quantize your recording, or record it slowly then speed it up, at Step 3).
-        <li>If you hear no sound when pressing a keyboard key, click anywhere on this webpage first, and ensure it says Status: Ready at the top of this page
-      <label>
-      <br>
-     
+        <li>If you hear no sound when pressing a keyboard key, click anywhere on this webpage first
       </ol>
 
-	<p><br>
-    <b style="color: yellow;">STEP THREE</b> <p> PRACTICE YOUR SEQUENCE. Then hit RECORD and play your chord pattern about 4 times (about 20 seconds worth of recording works well).</p>
-<button id="recordToggleButton" style="font-size: 16px; border: 2px solid red; text-transform: uppercase;">Record</button>
-<a id="downloadLink" style="display:none; color: yellow;">Download</a>    
-<br><br>
-<button id="chordLogButton" style="font-size: 16px;">Show Chord Log</button>
-<button id="clearLogButton" style="font-size: 16px; margin-left: 10px;">Clear Log</button>
-<div id="chordLogContent" style="display: none; margin-top: 10px; padding: 10px; background-color: #333; border-radius: 5px;">
-  <h3 style="margin-top: 0;">You played:</h3>
-  <div id="chordLogList"></div>
-</div>
-<br>
-<div style="display: inline-block; margin-top: 10px;">
-  <button id="speedButton" style="display:none; font-size: 16px;">Change speed of recording?</button>
-  <input id="speedBpmInput" type="number" value="125" min="30" max="300" style="display:none; margin-left: 10px; width: 60px; font-size: 16px;" /> <span id="speedBpmText" style="display:none; font-size: 16px;">TARGET BPM</span>
-</div>
+    <p><br>
+    <h2 style="color: yellow;">STEP THREE</h2>
+    <p>PRACTICE YOUR SEQUENCE. Then hit RECORD and play your chord pattern about 4 times (about 20 seconds worth of recording works well).</p>
+    <button id="recordToggleButton" style="font-size: 16px; border: 2px solid red; text-transform: uppercase;">start live recording</button>
+    <a id="downloadLink" style="display:none; color: yellow;">Download</a>    
+    <br><br>
+    <button id="chordLogButton" style="font-size: 16px;">Show Chord Log</button>
+    <button id="clearLogButton" style="font-size: 16px; margin-left: 10px;">Clear Log</button>
+    <div id="chordLogContent" style="display: none; margin-top: 10px; padding: 10px; background-color: #333; border-radius: 5px;">
+      <h3 style="margin-top: 0;">You played:</h3>
+      <div id="chordLogList"></div>
+    </div>
+    <br>
+    <div style="display: inline-block; margin-top: 10px;">
+      <button id="speedButton" style="display:none; font-size: 16px;">Change speed of recording?</button>
+      <input id="speedBpmInput" type="number" value="125" min="30" max="300" style="display:none; margin-left: 10px; width: 60px; font-size: 16px;" /> <span id="speedBpmText" style="display:none; font-size: 16px;">TARGET BPM</span>
+    </div>
 
+    <a id="speedDownloadLink" style="display:none; color: yellow;">Download</a>    
 
-<a id="speedDownloadLink" style="display:none; color: yellow;">Download</a>    
-	
+    <br/><br/>
+    <div style="display: inline-block;">
+      <button id="quantizeButton" style="display:none; font-size: 16px;">Quantize the recording? (experimental)</button>
+      <select id="quantizeValue" style="display:none; margin-left: 10px; vertical-align: middle; font-size: 16px;">
+        <option value="4">1/4 Note</option>
+        <option value="8">1/8 Note</option>
+        <option value="16" selected>1/16 Note</option>
+        <option value="32">1/32 Note</option>
+        <option value="64">1/64 Note</option>
+      </select>
+    </div>
+    <a id="quantizedDownloadLink" style="display:none; color: yellow;">Download</a>    
 
-
-<br/><br/>
-<div style="display: inline-block;">
-  <button id="quantizeButton" style="display:none; font-size: 16px;">Quantize the recording? (experimental)</button>
-  <select id="quantizeValue" style="display:none; margin-left: 10px; vertical-align: middle; font-size: 16px;">
-    <option value="4">1/4 Note</option>
-    <option value="8">1/8 Note</option>
-    <option value="16" selected>1/16 Note</option>
-    <option value="32">1/32 Note</option>
-    <option value="64">1/64 Note</option>
-  </select>
-</div>
-<a id="quantizedDownloadLink" style="display:none; color: yellow;">Download</a>    
-
-
-	
-	<p><br>
-    <b style="color: yellow;">STEP FOUR (For Suno Users etc)</b> <p> UPLOAD YOUR RECORDING to <a href="https://suno.com/create?wid=default" target="_blank" style="color: lightblue;">Suno</a> and choose COVER. Set the Audio Influence (try 100%), specify whatever style of music you want. Similar process may apply to other AI music generators.<br><a href="https://suno.com/playlist/10250bf6-c0bc-4166-90b4-fc75040f3c00" target="_blank" style="color: lightblue;">(Easy Cool Chords - quick examples using Suno)</a>
-      <p><br>
+    <p><br>
+    <h2 style="color: yellow;">STEP FOUR (For Suno Users etc)</h2>
+    <p>UPLOAD YOUR RECORDING to <a href="https://suno.com/create?wid=default" target="_blank" style="color: lightblue;">Suno</a> and choose COVER. Set the Audio Influence (try 100%), specify whatever style of music you want. Similar process may apply to other AI music generators.<br><a href="https://suno.com/playlist/10250bf6-c0bc-4166-90b4-fc75040f3c00" target="_blank" style="color: lightblue;">(Easy Cool Chords - quick examples using Suno)</a></p>
+    <p><br>
   </p>
 
- 
-
-<p><br>
+  <p><br>
   <p style="text-align: left;">Get ready to easily produce some inspiring chord progression / pattern for your next track! No more bland chords! 
     <br>
     Post any interesting chord progression patterns you came up with so we can try them out too! Eg C J L ; '</p>
-    <br>
-    Updates: We're looking into adding further features, like auto-pattern. (specify your chord letters, and select a style, eg bossa nova) 
-    <br>
+</div>
 
-    <br
-    <div style="text-align: left;">
-      <img src="https://hitscounter.dev/api/hit?url=easycoolchords.com&label=Visitors&icon=music-note-beamed&color=%23ffda6a">
-    </div>
+<div id="pattern-generator" style="margin-top: 50px; padding: 20px; background-color: #222; border-radius: 10px;">
+  <h2 style="color: yellow;">Rhythm & Chord Designer</h2>
+  
+  <div style="margin-bottom: 20px;">
+    <label style="margin-right: 20px;">
+      Quantize:
+      <select id="patternQuantizeValue" style="margin-left: 5px; font-size: 16px;">
+        <option value="4">1/4 Note</option>
+        <option value="8">1/8 Note</option>
+        <option value="16" selected>1/16 Note</option>
+        <option value="32">1/32 Note</option>
+        <option value="64">1/64 Note</option>
+      </select>
+    </label>
+    
+    <label style="margin-right: 20px;">
+      BPM:
+      <input id="patternBpmInput" type="number" value="125" min="30" max="300" style="width: 60px; font-size: 16px; margin-left: 5px;" />
+    </label>
+    
+    <label style="margin-right: 20px;">
+      Bars:
+      <input id="patternBarsInput" type="number" value="2" min="1" max="16" style="width: 60px; font-size: 16px; margin-left: 5px;" />
+    </label>
+    
+    <label style="margin-right: 20px;">
+      <input type="checkbox" id="patternMetronomeCheckbox" checked />
+      Enable Metronome
+    </label>
+    
+    <button id="updatePatternButton" style="font-size: 16px; margin-left: 20px;">Update Grid</button>
+    <button id="clearGridButton" style="font-size: 16px; margin-left: 10px;">Clear Grid</button>
+  </div>
+
+  <div id="patternGrid" style="margin-bottom: 20px;"></div>
+  
+  <button id="playPatternButton" style="font-size: 16px;">Play</button>
+  <button id="recordPatternButton" style="font-size: 16px; margin-left: 10px;">Record</button>
+  
+  <select id="patternPresets" style="font-size: 16px; margin-left: 10px; padding: 5px;">
+    <option value="">Rhythm Presets</option>
+    <option value="presets/BigBand.json">BigBand</option>
+    <option value="presets/BossaNova1.json">BossaNova1</option>
+    <option value="presets/BossaNova2.json">BossaNova2</option>
+    <option value="presets/Country.json">Country</option>
+    <option value="presets/Drill.json">Drill</option>
+    <option value="presets/Electro.json">Electro</option>
+    <option value="presets/Funk.json">Funk</option>
+    <option value="presets/House1.json">House1</option>
+    <option value="presets/House2.json">House2</option>
+    <option value="presets/House3.json">House3</option>
+    <option value="presets/Jazz.json">Jazz</option>
+    <option value="presets/Pop.json">Pop</option>
+    <option value="presets/Rap.json">Rap</option>
+    <option value="presets/Reggae.json">Reggae</option>
+    <option value="presets/RnB.json">RnB</option>
+    <option value="presets/Rock.json">Rock</option>
+    <option value="presets/Salsa.json">Salsa</option>
+    <option value="presets/Samba1.json">Samba1</option>
+    <option value="presets/Samba2.json">Samba2</option>
+    <option value="presets/Swing1.json">Swing1</option>
+    <option value="presets/Swing2.json">Swing2</option>
+    <option value="presets/Trance.json">Trance</option>
+  </select>
+
+  
+  <button id="randomPatternButton" style="font-size: 16px; margin-left: 10px;">Generate Random Rhythm</button>
+  <input type="file" id="patternFileInput" accept=".json" style="display: none;" />
+  <br>
+  
+  <button id="savePatternButton" style="font-size: 16px; margin-left: 10px;">Save</button>
+  <button id="loadPatternButton" style="font-size: 16px; margin-left: 10px;">Load</button>
+  <button id="exportWavButton" style="font-size: 16px; margin-left: 10px;">Export as WAV</button>
   
 
 
+  <div style="margin-top: 50px; border-top: 1px solid #444; padding-top: 20px;">
+    <h2 style="color: yellow;">Apply Chords to any Rhythm</h2>
+    <p>Type 4 chords (Each chord will be spanned over <select id="beatSpanSelect" style="background-color: #333; color: white; border: 1px solid #666; border-radius: 5px; padding: 2px;">
+      <option value="1">1</option>
+      <option value="2" selected>2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+    </select> beats until the grid is filled)</p>
+    <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <input type="text" maxlength="1" class="quick-chord-input" style="width: 40px; height: 40px; text-align: center; font-size: 16px; background-color: #333; color: white; border: 2px solid yellow; border-radius: 5px;">
+        <input type="text" maxlength="1" class="quick-chord-input" style="width: 40px; height: 40px; text-align: center; font-size: 16px; background-color: #333; color: white; border: 1px solid #666; border-radius: 5px;">
+        <input type="text" maxlength="1" class="quick-chord-input" style="width: 40px; height: 40px; text-align: center; font-size: 16px; background-color: #333; color: white; border: 1px solid #666; border-radius: 5px;">
+        <input type="text" maxlength="1" class="quick-chord-input" style="width: 40px; height: 40px; text-align: center; font-size: 16px; background-color: #333; color: white; border: 1px solid #666; border-radius: 5px;">
+      </div>
+      <div style="display: flex; gap: 10px;">
+        <button id="applyChordsButton" style="font-size: 16px;">Apply chords to Rhythm</button>
+        <button id="randomChordsButton" style="font-size: 16px;">Random Chords</button>
+        <button id="playChordsButton" style="font-size: 16px;">Play Chords</button>
+      </div>
+    </div>
+  </div>
 </div>
 
-<br/><br/>
-
-<br/><br/>
-
-
-
-
-
-<br/><br/>
-
-
+<br
+<div style="text-align: left;">
+ 
+</div>
 
 <script>
   const audioFiles = {
@@ -697,6 +777,7 @@
   // Metronome logic
   let metronomeInterval;
   let isMetronomeRunning = false;
+  let metronomeBeatInBar = 0;  // Track which beat we're on in the bar
 
   document.getElementById('metronomeButton').addEventListener('click', () => {
     if (isMetronomeRunning) {
@@ -709,13 +790,16 @@
   function startMetronome() {
     const tempo = parseInt(document.getElementById('tempoInput').value);
     const interval = 60000 / tempo;
+    metronomeBeatInBar = 0;  // Reset beat counter when starting
 
     if (!audioContext) {
       audioContext = new (window.AudioContext || window.webkitAudioContext)();
     }
 
     metronomeInterval = setInterval(() => {
-      playClick();
+      const isFirstBeat = metronomeBeatInBar === 0;
+      playClick(isFirstBeat);
+      metronomeBeatInBar = (metronomeBeatInBar + 1) % 4;  // Count beats 0-3
     }, interval);
 
     isMetronomeRunning = true;
@@ -725,15 +809,16 @@
   function stopMetronome() {
     clearInterval(metronomeInterval);
     isMetronomeRunning = false;
+    metronomeBeatInBar = 0;  // Reset beat counter when stopping
     document.getElementById('metronomeButton').textContent = 'Start Metronome';
   }
 
-  function playClick() {
+  function playClick(isFirstBeat = false) {
     const osc = audioContext.createOscillator();
     const gainNode = audioContext.createGain();
 
     osc.type = 'square';
-    osc.frequency.value = 1000;
+    osc.frequency.value = isFirstBeat ? 1500 : 1000;  // Higher pitch for first beat
 
     gainNode.gain.setValueAtTime(1, audioContext.currentTime);
     gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.05);
@@ -761,7 +846,7 @@
   // Function to toggle mode
   function toggleMode() {
     isAdvancedMode = !isAdvancedMode;
-    modeToggleButton.textContent = isAdvancedMode ? 'Switch to Instructional Mode' : 'Switch to Advanced Mode';
+    modeToggleButton.textContent = isAdvancedMode ? 'Show Instructions' : 'Hide Instructions';
     
     // Toggle visibility of instructional content
     const elements = instructionalContent.querySelectorAll('p, h2, ol');
@@ -807,6 +892,655 @@
       const logList = document.getElementById('chordLogList');
       logList.innerHTML = '';
     }
+  });
+
+  // Pattern Generator Logic
+  let patternGrid = [];
+  let isPatternPlaying = false;
+  let isPatternRecording = false;
+  let currentPlaybackIndex = 0;
+  let playbackInterval;
+
+  function createPatternGrid() {
+    const quantizeValue = parseInt(document.getElementById('patternQuantizeValue').value);
+    const numBars = parseInt(document.getElementById('patternBarsInput').value);
+    const gridContainer = document.getElementById('patternGrid');
+    
+    // Store existing values if we're increasing bars
+    const existingValues = patternGrid.map(row => row.map(cell => cell.value));
+    const lastBarValues = existingValues[existingValues.length - 1] || [];
+    
+    gridContainer.innerHTML = '';
+    patternGrid = [];
+    
+    for (let bar = 0; bar < numBars; bar++) {
+      const row = document.createElement('div');
+      row.style.display = 'flex';
+      row.style.marginBottom = '10px';
+      
+      const barCells = [];
+      for (let cell = 0; cell < quantizeValue; cell++) {
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.maxLength = 1;
+        input.style.width = '40px';
+        input.style.height = '40px';
+        input.style.margin = '0 5px';
+        input.style.textAlign = 'center';
+        input.style.fontSize = '16px';
+        input.style.backgroundColor = '#333';
+        input.style.color = 'white';
+        input.style.border = '1px solid #666';
+        input.style.borderRadius = '5px';
+        
+        // Add yellow border to first cell of each beat
+        if (cell % (quantizeValue / 4) === 0) {
+          input.style.border = '2px solid yellow';
+        }
+        
+        // Set value based on whether we're preserving existing data or copying from last bar
+        if (bar < existingValues.length) {
+          input.value = existingValues[bar][cell] || '';
+        } else {
+          input.value = lastBarValues[cell] || '';
+        }
+        
+        input.addEventListener('input', (e) => {
+          const value = e.target.value.toLowerCase();
+          // Special handling for ShiftRight
+          if (value === 'shiftright') {
+            e.target.value = 'ShiftRight';
+            return;
+          }
+          if (value && !getChordKeys(value).length) {
+            e.target.value = '';
+          }
+        });
+
+        // Add keydown event listener to handle Enter key and ShiftRight
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault(); // Prevent default Enter behavior
+            e.target.value = 'enter';
+            // Trigger input event to validate the value
+            e.target.dispatchEvent(new Event('input'));
+          } else if (e.code === 'ShiftRight') {
+            e.preventDefault(); // Prevent default Shift behavior
+            e.target.value = 'ShiftRight';
+            // Trigger input event to validate the value
+            e.target.dispatchEvent(new Event('input'));
+          }
+        });
+        
+        row.appendChild(input);
+        barCells.push(input);
+      }
+      
+      gridContainer.appendChild(row);
+      patternGrid.push(barCells);
+    }
+  }
+
+  function playPattern() {
+    if (isPatternPlaying) {
+      stopPattern();
+      return;
+    }
+    
+    const bpm = parseInt(document.getElementById('patternBpmInput').value);
+    const quantizeValue = parseInt(document.getElementById('patternQuantizeValue').value);
+    const secondsPerBeat = 60 / bpm;
+    const stepDuration = secondsPerBeat / (quantizeValue / 4);
+    const metronomeEnabled = document.getElementById('patternMetronomeCheckbox').checked;
+    
+    isPatternPlaying = true;
+    currentPlaybackIndex = 0;
+    document.getElementById('playPatternButton').textContent = 'Stop Pattern';
+    
+    // Reset all cell backgrounds
+    patternGrid.forEach(row => {
+      row.forEach(cell => {
+        cell.style.backgroundColor = '#333';
+      });
+    });
+    
+    playbackInterval = setInterval(() => {
+      const totalCells = patternGrid.length * patternGrid[0].length;
+      const currentBar = Math.floor(currentPlaybackIndex / patternGrid[0].length);
+      const currentCell = currentPlaybackIndex % patternGrid[0].length;
+      
+      // Reset previous cell background
+      if (currentPlaybackIndex > 0) {
+        const prevBar = Math.floor((currentPlaybackIndex - 1) / patternGrid[0].length);
+        const prevCell = (currentPlaybackIndex - 1) % patternGrid[0].length;
+        patternGrid[prevBar][prevCell].style.backgroundColor = '#333';
+      }
+      
+      // Highlight current cell
+      patternGrid[currentBar][currentCell].style.backgroundColor = '#666';
+      
+      // Play metronome if enabled
+      if (metronomeEnabled) {
+        const beatInBar = Math.floor(currentCell / (quantizeValue / 4));
+        const isFirstBeat = beatInBar === 0;
+        playClick(isFirstBeat);
+      }
+      
+      // Play chord if cell has a value
+      const chordKey = patternGrid[currentBar][currentCell].value;
+      if (chordKey) {
+        // For ShiftRight, use the exact case from audioFiles
+        const keyToUse = chordKey === 'ShiftRight' ? 'ShiftRight' : chordKey.toLowerCase();
+        const chordKeys = getChordKeys(keyToUse);
+        chordKeys.forEach(note => {
+          const source = audioContext.createBufferSource();
+          source.buffer = audioBuffers[note];
+          source.connect(audioContext.destination);
+          source.start();
+        });
+      }
+      
+      currentPlaybackIndex = (currentPlaybackIndex + 1) % totalCells;
+    }, stepDuration * 1000);
+  }
+
+  function stopPattern() {
+    clearInterval(playbackInterval);
+    
+    if (isPatternPlaying) {
+      isPatternPlaying = false;
+      document.getElementById('playPatternButton').textContent = 'Play Rhythm';
+    }
+    
+    if (isPatternRecording) {
+      isPatternRecording = false;
+      document.getElementById('recordPatternButton').textContent = 'Record Rhythm';
+      // Remove keyboard event listener
+      document.removeEventListener('keydown', recordKeyHandler);
+    }
+    
+    // Reset all cell backgrounds
+    patternGrid.forEach(row => {
+      row.forEach(cell => {
+        cell.style.backgroundColor = '#333';
+      });
+    });
+  }
+
+  function recordPattern() {
+    if (isPatternRecording) {
+      stopPattern();
+      return;
+    }
+    
+    const bpm = parseInt(document.getElementById('patternBpmInput').value);
+    const quantizeValue = parseInt(document.getElementById('patternQuantizeValue').value);
+    const secondsPerBeat = 60 / bpm;
+    const stepDuration = secondsPerBeat / (quantizeValue / 4);
+    const metronomeEnabled = document.getElementById('patternMetronomeCheckbox').checked;
+    
+    isPatternRecording = true;
+    currentPlaybackIndex = 0;
+    document.getElementById('recordPatternButton').textContent = 'Stop Recording';
+    
+    // Reset all cell backgrounds
+    patternGrid.forEach(row => {
+      row.forEach(cell => {
+        cell.style.backgroundColor = '#333';
+      });
+    });
+    
+    // Add keyboard event listener for recording
+    const recordKeyHandler = (event) => {
+      if (!isPatternRecording) return;
+      
+      let key = event.key.toLowerCase();
+      if (key === 'enter') key = 'enter';
+      else if (event.code === 'ShiftRight') key = 'ShiftRight';
+      
+      if (getChordKeys(key).length > 0) {
+        const currentBar = Math.floor(currentPlaybackIndex / patternGrid[0].length);
+        const currentCell = currentPlaybackIndex % patternGrid[0].length;
+        patternGrid[currentBar][currentCell].value = key;
+      }
+    };
+    
+    document.addEventListener('keydown', recordKeyHandler);
+    
+    playbackInterval = setInterval(() => {
+      const totalCells = patternGrid.length * patternGrid[0].length;
+      const currentBar = Math.floor(currentPlaybackIndex / patternGrid[0].length);
+      const currentCell = currentPlaybackIndex % patternGrid[0].length;
+      
+      // Reset previous cell background
+      if (currentPlaybackIndex > 0) {
+        const prevBar = Math.floor((currentPlaybackIndex - 1) / patternGrid[0].length);
+        const prevCell = (currentPlaybackIndex - 1) % patternGrid[0].length;
+        patternGrid[prevBar][prevCell].style.backgroundColor = '#333';
+      }
+      
+      // Highlight current cell
+      patternGrid[currentBar][currentCell].style.backgroundColor = '#666';
+      
+      // Play metronome if enabled
+      if (metronomeEnabled) {
+        const beatInBar = Math.floor(currentCell / (quantizeValue / 4));
+        const isFirstBeat = beatInBar === 0;
+        playClick(isFirstBeat);
+      }
+      
+      currentPlaybackIndex = (currentPlaybackIndex + 1) % totalCells;
+    }, stepDuration * 1000);
+  }
+
+  function savePattern() {
+    // Prompt for filename
+    const defaultName = 'my_rhythm.json';
+    const fileName = prompt('Your Rhythm file will be saved to your Downloads folder with name: ', defaultName);
+    
+    // If user cancels or enters empty name, use default
+    if (!fileName) return;
+    
+    // Ensure filename ends with .json
+    const finalFileName = fileName.endsWith('.json') ? fileName : `${fileName}.json`;
+    
+    // Collect all pattern data
+    const patternData = {
+      quantizeValue: document.getElementById('patternQuantizeValue').value,
+      bpm: document.getElementById('patternBpmInput').value,
+      bars: document.getElementById('patternBarsInput').value,
+      gridData: patternGrid.map(row => row.map(cell => cell.value))
+    };
+    
+    // Convert to JSON and create download
+    const jsonString = JSON.stringify(patternData, null, 2);
+    const blob = new Blob([jsonString], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    
+    // Create and trigger download
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = finalFileName;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  function loadPattern(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      try {
+        const patternData = JSON.parse(e.target.result);
+        
+        // Update controls
+        document.getElementById('patternQuantizeValue').value = patternData.quantizeValue;
+        document.getElementById('patternBpmInput').value = patternData.bpm;
+        document.getElementById('patternBarsInput').value = patternData.bars;
+        
+        // Recreate grid with new settings
+        createPatternGrid();
+        
+        // Fill in grid data
+        patternData.gridData.forEach((row, rowIndex) => {
+          row.forEach((value, cellIndex) => {
+            if (patternGrid[rowIndex] && patternGrid[rowIndex][cellIndex]) {
+              patternGrid[rowIndex][cellIndex].value = value;
+            }
+          });
+        });
+      } catch (error) {
+        console.error('Error loading pattern:', error);
+        alert('Error loading pattern file. Please make sure it\'s a valid pattern file.');
+      }
+    };
+    reader.readAsText(file);
+  }
+
+  // Add preset loading functionality
+  document.getElementById('patternPresets').addEventListener('change', async function(e) {
+    const presetFile = e.target.value;
+    if (!presetFile) return;
+    
+    try {
+      const response = await fetch(presetFile);
+      if (!response.ok) throw new Error('Failed to load preset');
+      
+      const patternData = await response.json();
+      
+      // Update controls
+      document.getElementById('patternQuantizeValue').value = patternData.quantizeValue;
+      document.getElementById('patternBpmInput').value = patternData.bpm;
+      document.getElementById('patternBarsInput').value = patternData.bars;
+      
+      // Recreate grid with new settings
+      createPatternGrid();
+      
+      // Fill in grid data
+      patternData.gridData.forEach((row, rowIndex) => {
+        row.forEach((value, cellIndex) => {
+          if (patternGrid[rowIndex] && patternGrid[rowIndex][cellIndex]) {
+            patternGrid[rowIndex][cellIndex].value = value;
+          }
+        });
+      });
+      
+      // Reset dropdown to default
+      e.target.value = '';
+    } catch (error) {
+      console.error('Error loading preset:', error);
+      alert('Error loading preset. Please try again.');
+    }
+  });
+
+  // Add export WAV functionality
+  async function exportPatternAsWav() {
+    // Prompt for number of repeats
+    const repeats = parseInt(prompt('How many times should your Chord Progression repeat? Suggest 8 times', '8'));
+    if (isNaN(repeats) || repeats < 1) {
+      alert('Please enter a valid number of repeats (minimum 1)');
+      return;
+    }
+    
+    const bpm = parseInt(document.getElementById('patternBpmInput').value);
+    const quantizeValue = parseInt(document.getElementById('patternQuantizeValue').value);
+    const secondsPerBeat = 60 / bpm;
+    const stepDuration = secondsPerBeat / (quantizeValue / 4);
+    
+    // Calculate total duration for all repeats
+    const stepsPerPattern = patternGrid.length * patternGrid[0].length;
+    const totalSteps = stepsPerPattern * repeats;
+    const totalDuration = totalSteps * stepDuration + 2; // Add 2 seconds padding
+    
+    // Create offline context
+    const offlineContext = new OfflineAudioContext(2, 44100 * totalDuration, 44100);
+    
+    // Schedule all notes for all repeats
+    for (let repeat = 0; repeat < repeats; repeat++) {
+      patternGrid.forEach((row, rowIndex) => {
+        row.forEach((cell, cellIndex) => {
+          if (cell.value) {
+            const chordKeys = getChordKeys(cell.value.toLowerCase());
+            const time = (repeat * stepsPerPattern + rowIndex * patternGrid[0].length + cellIndex) * stepDuration;
+            
+            chordKeys.forEach(note => {
+              const source = offlineContext.createBufferSource();
+              source.buffer = audioBuffers[note];
+              source.connect(offlineContext.destination);
+              source.start(time);
+            });
+          }
+        });
+      });
+    }
+    
+    // Render the audio
+    const renderedBuffer = await offlineContext.startRendering();
+    const wavBlob = audioBufferToWav(renderedBuffer);
+    const url = URL.createObjectURL(wavBlob);
+    
+    // Create and trigger download
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `easy_cool_chords_${repeats}repeats.wav`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  function clearGrid() {
+    patternGrid.forEach(row => {
+      row.forEach(cell => {
+        cell.value = '';
+      });
+    });
+  }
+
+  // Initialize pattern generator
+  document.getElementById('updatePatternButton').addEventListener('click', createPatternGrid);
+  document.getElementById('playPatternButton').addEventListener('click', playPattern);
+  document.getElementById('recordPatternButton').addEventListener('click', recordPattern);
+  document.getElementById('savePatternButton').addEventListener('click', savePattern);
+  document.getElementById('loadPatternButton').addEventListener('click', () => {
+    document.getElementById('patternFileInput').click();
+  });
+  document.getElementById('exportWavButton').addEventListener('click', exportPatternAsWav);
+  document.getElementById('clearGridButton').addEventListener('click', clearGrid);
+  document.getElementById('randomPatternButton').addEventListener('click', generateRandomPattern);
+  document.getElementById('patternFileInput').addEventListener('change', loadPattern);
+
+  // Create initial grid
+  createPatternGrid();
+
+  // Load House1 preset on page load
+  window.addEventListener('load', async () => {
+    try {
+      const response = await fetch('presets/House1.json');
+      if (!response.ok) throw new Error('Failed to load House1 preset');
+      
+      const patternData = await response.json();
+      
+      // Update controls
+      document.getElementById('patternQuantizeValue').value = patternData.quantizeValue;
+      document.getElementById('patternBpmInput').value = patternData.bpm;
+      document.getElementById('patternBarsInput').value = patternData.bars;
+      
+      // Recreate grid with new settings
+      createPatternGrid();
+      
+      // Fill in grid data
+      patternData.gridData.forEach((row, rowIndex) => {
+        row.forEach((value, cellIndex) => {
+          if (patternGrid[rowIndex] && patternGrid[rowIndex][cellIndex]) {
+            patternGrid[rowIndex][cellIndex].value = value;
+          }
+        });
+      });
+    } catch (error) {
+      console.error('Error loading House1 preset:', error);
+    }
+  });
+
+  // Function to generate random pattern
+  function generateRandomPattern() {
+    // Clear existing grid
+    clearGrid();
+    
+    // Generate random pattern using 'q' key
+    patternGrid.forEach(row => {
+      row.forEach(cell => {
+        // 40% chance to place a 'q' in each cell
+        if (Math.random() < 0.40) {
+          cell.value = 'q';
+        }
+      });
+    });
+
+    // Check if there are 4 chords in the quick chord inputs
+    const inputs = document.querySelectorAll('.quick-chord-input');
+    const chords = Array.from(inputs).map(input => input.value.toLowerCase());
+    
+    // If we have exactly 4 chords, trigger the apply button click
+    if (chords.length === 4 && chords.every(chord => chord !== '')) {
+      document.getElementById('applyChordsButton').click();
+    }
+  }
+
+  // Add event listener for play chords button
+  document.getElementById('playChordsButton').addEventListener('click', async () => {
+    const inputs = document.querySelectorAll('.quick-chord-input');
+    const selectedChords = Array.from(inputs).map(input => input.value);
+    
+    // Play each chord with a delay
+    for (let i = 0; i < selectedChords.length; i++) {
+      const chordKey = selectedChords[i];
+      if (chordKey) {  // Only play if there's a chord value
+        // For ShiftRight, use the exact case from audioFiles
+        const keyToUse = chordKey === 'ShiftRight' ? 'ShiftRight' : chordKey.toLowerCase();
+        const chordKeys = getChordKeys(keyToUse);
+        
+        // Play the chord
+        chordKeys.forEach(note => {
+          const source = audioContext.createBufferSource();
+          source.buffer = audioBuffers[note];
+          source.connect(audioContext.destination);
+          source.start();
+        });
+
+        // Wait 1 second before playing the next chord
+        if (i < selectedChords.length - 1) {
+          await new Promise(resolve => setTimeout(resolve, 1000));
+        }
+      }
+    }
+  });
+
+  // Add event listener for random chords button
+  document.getElementById('randomChordsButton').addEventListener('click', async () => {
+    const validChordKeys = [
+      'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']',
+      'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", 'enter',
+      '\\', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'ShiftRight',
+      '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '='
+    ];
+    
+    const inputs = document.querySelectorAll('.quick-chord-input');
+    const selectedChords = [];
+    
+    // First, set random values and collect them
+    inputs.forEach(input => {
+      const randomIndex = Math.floor(Math.random() * validChordKeys.length);
+      const randomChord = validChordKeys[randomIndex];
+      // Preserve the case for 'enter' and 'ShiftRight'
+      input.value = randomChord;
+      selectedChords.push(randomChord);
+    });
+
+    // Then play each chord with a delay
+    for (let i = 0; i < selectedChords.length; i++) {
+      const chordKey = selectedChords[i];
+      // For ShiftRight, use the exact case from audioFiles
+      const keyToUse = chordKey === 'ShiftRight' ? 'ShiftRight' : chordKey.toLowerCase();
+      const chordKeys = getChordKeys(keyToUse);
+      
+      // Play the chord
+      chordKeys.forEach(note => {
+        const source = audioContext.createBufferSource();
+        source.buffer = audioBuffers[note];
+        source.connect(audioContext.destination);
+        source.start();
+      });
+
+      // Wait 1 second before playing the next chord
+      if (i < selectedChords.length - 1) {
+        await new Promise(resolve => setTimeout(resolve, 1000));
+      }
+    }
+  });
+
+  // Add hits counter image
+  const hitsCounter = document.createElement('img');
+  hitsCounter.src = 'https://hitscounter.dev/api/hit?url=easycoolchords.com&label=Visitors&icon=music-note-beamed&color=%23ffda6a';
+  document.body.appendChild(hitsCounter);
+
+  // Add event listeners for quick chord inputs
+  document.querySelectorAll('.quick-chord-input').forEach((input, index) => {
+    // Set initial values for the quick chord inputs
+    const initialChords = ['u', 'r', 'u', 't'];
+    input.value = initialChords[index];
+
+    // Add focus event listener to clear value when input receives focus
+    input.addEventListener('focus', (e) => {
+      e.target.value = ''; // Clear the value when input receives focus
+    });
+
+    input.addEventListener('keyup', (e) => {
+      const value = e.target.value.toLowerCase();
+      // Special handling for ShiftRight
+      if (value === 'shiftright') {
+        e.target.value = 'ShiftRight';
+        return;
+      }
+      if (value && !getChordKeys(value).length) {
+        e.target.value = '';
+      } else if (value) {
+        // If we have a valid value and there's a next input, clear it and move focus
+        const nextInput = document.querySelectorAll('.quick-chord-input')[index + 1];
+        if (nextInput) {
+          nextInput.value = ''; // Clear the next input's value
+          nextInput.focus();
+        }
+      }
+    });
+
+    // Add keydown event listener to handle backspace and enter
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Backspace' && !e.target.value) {
+        // If backspace is pressed and input is empty, move to previous input
+        const prevInput = document.querySelectorAll('.quick-chord-input')[index - 1];
+        if (prevInput) {
+          prevInput.focus();
+        }
+      } else if (e.key === 'Enter') {
+        e.preventDefault(); // Prevent default Enter behavior
+        e.target.value = 'enter';
+        // Trigger keyup event to validate and handle focus
+        e.target.dispatchEvent(new Event('keyup'));
+      } else if (e.code === 'ShiftRight') {
+        e.preventDefault(); // Prevent default Shift behavior
+        e.target.value = 'ShiftRight';
+        // Trigger keyup event to validate and handle focus
+        e.target.dispatchEvent(new Event('keyup'));
+      }
+    });
+  });
+
+  // Add event listener for apply button
+  document.getElementById('applyChordsButton').addEventListener('click', () => {
+    const inputs = document.querySelectorAll('.quick-chord-input');
+    const chords = Array.from(inputs).map(input => {
+      const value = input.value;
+      // Preserve case for 'enter' and 'ShiftRight', lowercase everything else
+      return value === 'ShiftRight' ? 'ShiftRight' : value.toLowerCase();
+    });
+    const beatSpan = parseInt(document.getElementById('beatSpanSelect').value);
+    
+    // Get current grid settings
+    const quantizeValue = parseInt(document.getElementById('patternQuantizeValue').value);
+    const cellsPerBeat = quantizeValue / 4;
+    const cellsPerChord = cellsPerBeat * beatSpan; // Total cells each chord should span
+    
+    // Calculate total cells in the grid
+    const totalCells = patternGrid.length * patternGrid[0].length;
+    
+    // Apply chords to all rows in the pattern, but only to cells that have values
+    let currentCellIndex = 0;
+    patternGrid.forEach(row => {
+      row.forEach((cell) => {
+        // Calculate which chord to use based on the beat span
+        const chordIndex = Math.floor(currentCellIndex / cellsPerChord) % chords.length;
+        
+        // Only overwrite if the cell already has a value
+        if (cell.value) {
+          cell.value = chords[chordIndex] || '';
+        }
+        currentCellIndex++;
+      });
+    });
+  });
+
+  // Add a function to remove focus from buttons after click
+  function removeButtonFocus(event) {
+    event.target.blur();
+  }
+
+  // Add focus removal to all buttons
+  document.querySelectorAll('button').forEach(button => {
+    button.addEventListener('click', removeButtonFocus);
   });
 </script>
 </body>
