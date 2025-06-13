@@ -296,6 +296,11 @@
         <button id="randomChordsButton" style="font-size: 16px;">Random Chords</button>
         <button id="playChordsButton" style="font-size: 16px;">Play Chords</button>
       </div>
+      <div style="display: flex; gap: 10px; margin-top: 10px;">
+        <button id="saveChordsButton" style="font-size: 16px;">Save Chords</button>
+        <button id="loadChordsButton" style="font-size: 16px;">Load Chords</button>
+        <input type="file" id="chordsFileInput" accept=".json" style="display: none;" />
+      </div>
     </div>
   </div>
 </div>
@@ -1531,6 +1536,79 @@
         currentCellIndex++;
       });
     });
+  });
+
+  // Add event listener for save chords button
+  document.getElementById('saveChordsButton').addEventListener('click', () => {
+    const inputs = document.querySelectorAll('.quick-chord-input');
+    const chords = Array.from(inputs).map(input => input.value);
+    
+    // Prompt for filename
+    const defaultName = 'my_chords.json';
+    const fileName = prompt('Your Chords file will be saved to your Downloads folder with name: ', defaultName);
+    
+    // If user cancels or enters empty name, use default
+    if (!fileName) return;
+    
+    // Ensure filename ends with .json
+    const finalFileName = fileName.endsWith('.json') ? fileName : `${fileName}.json`;
+    
+    // Create chord data object
+    const chordData = {
+      chords: chords
+    };
+    
+    // Convert to JSON and create download
+    const jsonString = JSON.stringify(chordData, null, 2);
+    const blob = new Blob([jsonString], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    
+    // Create and trigger download
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = finalFileName;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
+
+  // Add event listener for load chords button
+  document.getElementById('loadChordsButton').addEventListener('click', () => {
+    document.getElementById('chordsFileInput').click();
+  });
+
+  // Add event listener for chords file input
+  document.getElementById('chordsFileInput').addEventListener('change', (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      try {
+        const chordData = JSON.parse(e.target.result);
+        
+        // Validate the loaded data
+        if (!chordData.chords || !Array.isArray(chordData.chords) || chordData.chords.length !== 4) {
+          throw new Error('Invalid chord file format');
+        }
+        
+        // Update the input boxes with loaded chords
+        const inputs = document.querySelectorAll('.quick-chord-input');
+        chordData.chords.forEach((chord, index) => {
+          if (inputs[index]) {
+            inputs[index].value = chord;
+          }
+        });
+
+        // Automatically play the loaded chords
+        document.getElementById('playChordsButton').click();
+      } catch (error) {
+        console.error('Error loading chords:', error);
+        alert('Error loading chord file. Please make sure it\'s a valid chord file.');
+      }
+    };
+    reader.readAsText(file);
   });
 
   // Add a function to remove focus from buttons after click
